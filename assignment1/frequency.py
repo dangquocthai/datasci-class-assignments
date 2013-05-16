@@ -8,9 +8,9 @@ def main():
   tweets = tweet_file.readlines()
   tweets = map(lambda tweet: tweet.encode('utf-8', 'ignore'), tweets)
   # Print basic stats for debugging
-  print "Total tweets read : " + str(len(tweets))
-  print "---Sample Tweet---"
-  print json.loads(tweets[103])["text"]
+  #print "Total tweets read : " + str(len(tweets))
+  #print "---Sample Tweet---"
+  #print json.loads(tweets[103])["text"]
 
   # Read all tweets and score them.
   scores = {}
@@ -23,13 +23,13 @@ def main():
   total_words = sum(scores.values())
 
   # Print some de-bug.
-  print "Total words : ", len(scores.keys())
-  print "Total words count : ", total_words
+  #print "Total words : ", len(scores.keys())
+  #print "Total words count : ", total_words
 
   # Print terms and frequency
   for term, count in scores.items():
       frequency = (count / total_words)
-      print term + " " + str(frequency)
+      print term.encode('utf-8', 'ignore') + " " + str(frequency)
 
 if __name__ == "__main__":
     main()
