@@ -50,7 +50,7 @@ def main():
     for sentiment in sentiments.keys():
       if sentiment in tweet.encode('ascii', 'ignore'):
         score = score + sentiments[sentiment]
-    print tweet.encode('ascii', 'ignore')
+    #print tweet.encode('ascii', 'ignore')
     print str(score)
 
 if __name__ == '__main__':
