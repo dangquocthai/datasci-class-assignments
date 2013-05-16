@@ -9,6 +9,7 @@ def print_stats():
   print "Sample of sentiments"
   sample_keys = sentiments.keys()[0:5]
   for key in sample_keys : print key + " => " + str(sentiments[key])
+  print "The value for \"not working\" " + str(sentiments["not working"])
   print "-------------------------------"
   print "Number of tweets : " + str(len(tweets))
   print "Sample of tweets"
@@ -37,10 +38,20 @@ def main():
   # For debugging.
   #print_stats()
 
-  # Scoring.
+  # Scoring only using words.
+  #for tweet in tweets:
+    #print tweet.encode('ascii', 'ignore')
+    #print float(sum(map(lambda word: sentiments.get(word, 0), tweet.split(' '))))
+
+  # Scoring using sentiments, takes more time, but I think this is more accurate.
+  # For example, in cases where phrases are used.
   for tweet in tweets:
+    score = 0.0
+    for sentiment in sentiments.keys():
+      if sentiment in tweet.encode('ascii', 'ignore'):
+        score = score + sentiments[sentiment]
     print tweet.encode('ascii', 'ignore')
-    print float(sum(map(lambda word: sentiments.get(word, 0), tweet.split(' '))))
+    print str(score)
 
 if __name__ == '__main__':
   main()
