@@ -14,6 +14,7 @@ def main():
 
   for row in rows:
     r,c,v = row
+    #print "Storing ", (r,c), " value : ", v
     vals[(r,c)] = v
 
   with con:
@@ -23,15 +24,15 @@ def main():
     max_row, max_col = result
     print "Max row = ", max_row , "; Max col = ", max_col
 
-  for row in range(max_row):
-    for col in range(max_col):
+  for row in range(max_row + 1):
+    for col in range(max_col + 1):
       element = vals.get((row, col), 0)
       print element , "\t" ,
     print "\n"
 
   print "----------Transpose matrix----------"
-  for row in range(max_row):
-    for col in range(max_col):
+  for row in range(max_row + 1):
+    for col in range(max_col + 1):
       element = vals.get((col, row), 0)
       print element , "\t" ,
     print "\n"
